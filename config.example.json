@@ -1,0 +1,8 @@
+{
+  "enabled": true,
+  "bot_token": "ВСТАВЬ_СЮДА_ТОКЕН_ОТ_BOTFATHER",
+  "chat_id": "",
+  "idle_minutes": 3,
+  "max_chars": 600,
+  "proxy": ""
+}

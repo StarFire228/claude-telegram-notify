@@ -1,0 +1,4 @@
+# личные данные: токен бота и chat_id
+config.json
+notify.log
+*.bak
