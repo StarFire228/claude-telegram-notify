@@ -7,6 +7,7 @@ param(
 )
 
 $ErrorActionPreference = "Stop"
+if ($Test) { $Event = "Test" }
 $here = Split-Path -Parent $MyInvocation.MyCommand.Path
 $logFile = Join-Path $here "notify.log"
 

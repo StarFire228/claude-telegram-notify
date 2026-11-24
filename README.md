@@ -43,14 +43,16 @@ Claude Code ──(хук Stop / Notification)──► notify.ps1
 
 1. Создай бота у [@BotFather](https://t.me/BotFather) командой `/newbot` и скопируй токен.
 2. Открой своего бота в Telegram и нажми **Start**.
-3. Склонируй репозиторий и запусти `setup.cmd`. При первом запуске он создаст `config.json`.
-4. Впиши токен в `config.json` и запусти `setup.cmd` ещё раз. Скрипт:
-   - проверит токен;
-   - найдёт твой `chat_id` по сообщению боту;
-   - пропишет хуки в `%USERPROFILE%\.claude\settings.json`, не трогая остальные настройки (копия старого файла сохранится как `.bak`);
-   - пришлёт тестовое сообщение.
+3. Склонируй репозиторий и запусти `settings.cmd`. Откроется окно настроек:
 
-Хуки начинают работать в новых сессиях Claude Code.
+<p align="center"><img src="docs/settings.png" width="440" alt="Окно настроек"></p>
+
+4. Вставь токен и нажми «Проверить», затем «Найти мой чат» и «Подключить». Последняя кнопка прописывает хуки в `%USERPROFILE%\.claude\settings.json`, не трогая остальные настройки (копия старого файла сохраняется как `.bak`).
+5. Нажми «Отправить тест». В Telegram должно прийти сообщение.
+
+Хуки начинают работать в новых сессиях Claude Code. В этом же окне потом можно временно выключить уведомления, поменять порог «отошёл» и открыть лог.
+
+Если удобнее консоль, `setup.cmd` делает всё то же самое без окна: берёт токен из `config.json`, находит чат, подключает хуки и шлёт тест.
 
 ## Настройки (`config.json`)
 
@@ -68,12 +70,14 @@ Claude Code ──(хук Stop / Notification)──► notify.ps1
 ## Файлы
 
 - `notify.ps1` — сам хук: проверка бездействия, сбор текста, отправка в Telegram.
-- `setup.ps1` / `setup.cmd` — первичная настройка и регистрация хуков.
+- `settings.ps1` / `settings.cmd` — окно настроек (WinForms).
+- `setup.ps1` / `setup.cmd` — то же из консоли.
+- `lib.ps1` — общие функции: конфиг, Telegram API, регистрация хуков.
 - `config.example.json` — шаблон настроек.
 
 ---
 
-**English:** Telegram notifications from Claude Code that arrive only when you're away from the PC (no mouse or keyboard input for N minutes). It uses the Claude Code `Stop` and `Notification` hooks, WinAPI `GetLastInputInfo` and the Telegram Bot API. Pure PowerShell + curl, no server. Run `setup.cmd` to configure.
+**English:** Telegram notifications from Claude Code that arrive only when you're away from the PC (no mouse or keyboard input for N minutes). It uses the Claude Code `Stop` and `Notification` hooks, WinAPI `GetLastInputInfo` and the Telegram Bot API. Pure PowerShell + curl, no server. Run `settings.cmd` for the settings window (or `setup.cmd` in a console).
 
 ## Лицензия
 
